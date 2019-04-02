@@ -1,59 +1,26 @@
 #!/bin/python
 
-def rdf(traj,clust):
+def rdf(clust,clust_xyz,trajectory,cog):
 
- bx=traj.unitcell_lengths[0][0]
- by=traj.unitcell_lengths[0][1]
- bz=traj.unitcell_lengths[0][2]
+ for c in clust:
+  
+  print(c,cog[clust.index(c)])
 
- c=[]
+  for p in c:
+   n=p+1
 
- for cs in range(0,len(clust)):		### loop over clusters
-  pn=-1
-  for cn in clust[cs]:			### loop over proteins
-   pn=pn+1
+   x=cxyz[clust.index(c)][c.index(p)][0]*10.0	### [nm] -> [A]
+   y=cxyz[clust.index(c)][c.index(p)][1]*10.0
+   z=cxyz[clust.index(c)][c.index(p)][2]*10.0
 
-   x=traj.xyz[0,cn,0]
-   y=traj.xyz[0,cn,1]
-   z=traj.xyz[0,cn,2]
-   
-   if(pn==0):				### add first protein
-    c.append([[x,y,z]])
-   else:
-    for pc in range(0,len(c)):			### compare added proteins
-     for pq in range(pc,len(clust[cs])):	### with the rest
-
-      for nx in [-1,0,1]:
-       for ny in [-1,0,1]:
-        for nz in [-1,0,1]:
-         
+   r=traj.topology.atom(p).name
 
 
-#    c[cs].append([x1,y1,z1])
- print(c)
 
-"""
+#printf("%s%9.3f%9.3f%9.3f%s\n","CRYST1",bx,by,bz,"  90.00  90.00  90.00 P 1           1")
+   print("%6s%5i%5s%4s%6i    %8.3f%8.3f%8.3f%s%s" % 
+("ATOM  ",n,r,r,n,x,y,z,"  1.00  1.00      ","PRO0"),file=f)
 
-   x2=traj.xyz[0,r2,0]
-   y2=traj.xyz[0,r2,1]
-   z2=traj.xyz[0,r2,2]
+ f.close()
 
-   dx=(x1-x2)%bx				### deals with unwraped trajectories too
-   dy=(y1-y2)%by
-   dz=(z1-z2)%bz
-
-   if(dx>0.5*bx):
-    dx=dx-bx
-
-   if(dy>0.5*by):
-    dy=dy-by
-
-   if(dz>0.5*bz):
-    dz=dz-bz
-
-#   dxyz=np.sqrt(dx**2+dy**2+dz**2)	### closest distance
-   dxyz2=dx**2+dy**2+dz**2
-
-   rn1=traj.topology.atom(r1).name
-   rn2=traj.topology.atom(r2).name
 """
