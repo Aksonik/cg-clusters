@@ -1,26 +1,71 @@
 #!/bin/python
+import numpy as np
+import os
 
-def rdf(clust,clust_xyz,trajectory,cog):
+def rdf(clust,clust_xyz,traj,cog):
 
- for c in clust:
-  
-  print(c,cog[clust.index(c)])
+ if not os.path.exists("rdf"):		### remove/create results directory
+  os.mkdir("rdf")
+ for f in os.listdir("rdf"):
+  os.remove("rdf/"+f)
 
-  for p in c:
-   n=p+1
+ bs=0.5		### bin size [nm]
 
-   x=cxyz[clust.index(c)][c.index(p)][0]*10.0	### [nm] -> [A]
-   y=cxyz[clust.index(c)][c.index(p)][1]*10.0
-   z=cxyz[clust.index(c)][c.index(p)][2]*10.0
+ dd=[]
+ rr=[]
 
-   r=traj.topology.atom(p).name
+ for c in range(0,len(cog)):			### cluster
 
+  cx=cog[c][0]					### center of geometry
+  cy=cog[c][1]
+  cz=cog[c][2]
 
+  for p in range(0,len(clust_xyz[c])):		### protein
 
-#printf("%s%9.3f%9.3f%9.3f%s\n","CRYST1",bx,by,bz,"  90.00  90.00  90.00 P 1           1")
-   print("%6s%5i%5s%4s%6i    %8.3f%8.3f%8.3f%s%s" % 
-("ATOM  ",n,r,r,n,x,y,z,"  1.00  1.00      ","PRO0"),file=f)
+   px=clust_xyz[c][p][0]			### coordinates
+   py=clust_xyz[c][p][1]
+   pz=clust_xyz[c][p][2]
 
- f.close()
+   r=traj.topology.atom(clust[c][p]).name		### residue
+   d=np.sqrt((cx-px)**2+(cy-py)**2+(cz-pz)**2)		### distance from the center
 
-"""
+   if(p==0):
+    dd.append([d])
+    rr.append([r])
+   else:
+    dd[c].append(d)
+    rr[c].append(r)
+
+### print(dd)	### distances
+### print(rr)
+
+ for c in range(0,len(dd)):		### cluster
+  for r in set(rr[c]):			### residue type
+
+   drr=[]
+
+   for d in range(0,len(dd[c])):	### protein
+
+    if(rr[c][d]==r):
+     drr.append(dd[c][d])
+
+###     print(c,r,d,dd[c][d])
+###   print(drr)			### distances for a given residue type
+
+   bn=[]
+   for b in range(0,int(max(dd[c])/bs)+1):
+    bn.append(0)
+
+   for dr in range(0,len(drr)):
+    dndx=int(drr[dr]/bs)			### corresponding bin index
+    bn[dndx]=bn[dndx]+1
+
+###   print(bn)
+
+   f=open("rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat","w")
+
+   for b in range(0,len(bn)):
+    vol=4.0/3.0*3.141592653589793*((b*bs+bs)**3-(b*bs)**3)	### [nm^3]
+    print(b*bs+0.5*bs,bn[b]/vol,file=f)				### [1/nm^3]
+
+   f.close()

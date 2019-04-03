@@ -97,10 +97,13 @@ def csd(traj,contact):
      cxyz[cn].append([x2,y2,z2])
      pr.remove(p2)
 
-#   print(len(pr))
+     print("proteins left:",len(pr))
 
  for m in pr:			### add monomers
   c.append([m])
   cxyz.append([[traj.xyz[0,m,0],traj.xyz[0,m,1],traj.xyz[0,m,2]]])
+  pr.remove(m)
 
+  print("proteins left:",len(pr))
+ 
  return(c,cxyz)
