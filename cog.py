@@ -24,11 +24,12 @@ def cog(clust,cxyz,traj):
 
   cog.append([cogx/len(c),cogy/len(c),cogz/len(c)])
 
-
   r="COG"
   n=1
+
   print("%6s%5i%5s%4s%6i    %8.3f%8.3f%8.3f%s%s" % 
-   ("ATOM  ",n,r,r,n,cogx/len(c)*10.0,cogy/len(c)*10.0,cogz/len(c)*10.0,"  1.00  1.00      ","PRO0"),file=f)	### [nm] -> [A]
+  ("ATOM  ",n,r,r,n,cogx/len(c)*10.0,cogy/len(c)*10.0,cogz/len(c)*10.0,
+   "  1.00  1.00      ","PRO0"),file=f)						### [nm] -> [A]
 
  f.close()
 

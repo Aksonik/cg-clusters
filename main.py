@@ -1,10 +1,10 @@
 #!/bin/python
 
 import argparse
-import oj
-import readtraj
+import cluster
+import traj
 import genpdb
-import csdplt
+import csd
 import cog
 import rdf
 
@@ -17,16 +17,24 @@ parser.add_argument("-c",type=str,help="contact criterion parameters")
 
 args=parser.parse_args()
 
-trajectory=readtraj.traj(args.s,args.t,args.f)
-clust,clust_xyz=oj.csd(trajectory,args.c)
 
-#print(clust,clust_xyz)
 
-csdplt.csdplt(clust)
+### reads the structure and a frame from the trajectory
+trajectory=traj.traj(args.s,args.t,args.f)
 
+### gives back clustered proteins numbers and their wrapped coordinates
+clust,clust_xyz=cluster.cluster(trajectory,args.c)
+
+
+### determines cluster size distribution function
+csd.csd(clust)
+
+### generates a pdb of proteins with wrapped coordinates
 genpdb.genpdb(clust,clust_xyz,trajectory)
 
+### calculates centers of geometry of clusters
 cog=cog.cog(clust,clust_xyz,trajectory)
 
+### calculates radial distribution function of clusters
 rdf=rdf.rdf(clust,clust_xyz,trajectory,cog)
 

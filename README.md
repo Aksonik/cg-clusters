@@ -1,3 +1,2 @@
-# hello-world
-This is my firt repository.
-I am fantastic!
+# cg-clusters
+These scripts analyse clusters from coarse grained trajectory.

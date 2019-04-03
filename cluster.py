@@ -2,7 +2,7 @@
 import mdtraj as md
 import numpy as np
 
-def csd(traj,contact):
+def cluster(traj,contact):
 
  file=open(contact,"r")		### read contact parameters from a file
 

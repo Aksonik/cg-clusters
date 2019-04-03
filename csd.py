@@ -1,6 +1,6 @@
 #!/bin/python
 
-def csdplt(clust):
+def csd(clust):
 
  maxc=1			### the largest cluster found
  totp=0			### total number of proteins
@@ -9,6 +9,8 @@ def csdplt(clust):
   totp=totp+len(c)
   if(len(c)>maxc):
    maxc=len(c)
+
+
 
  f=open("csd.dat","w")
 
