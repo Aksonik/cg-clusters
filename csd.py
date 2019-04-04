@@ -19,6 +19,6 @@ def csd(clust):
   for c in clust:
    if(len(c)==s):
     cp=cp+len(c)
-  print(s,cp/totp,file=f)
+  print(s,cp/totp*100,file=f)	### [%]
 
  f.close()

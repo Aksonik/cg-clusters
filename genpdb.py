@@ -4,9 +4,9 @@ def genpdb(clust,cxyz,traj):
 
  f=open("genpdb.pdb","w")
 
- bx=traj.unitcell_lengths[0][0]
- by=traj.unitcell_lengths[0][1]
- bz=traj.unitcell_lengths[0][2]
+ bx=traj.unitcell_lengths[0][0]*10.0
+ by=traj.unitcell_lengths[0][1]*10.0
+ bz=traj.unitcell_lengths[0][2]*10.0
 
  print("%s%9.3f%9.3f%9.3f%s" % 
  ("CRYST1",bx,by,bz,"  90.00  90.00  90.00 P 1           1"),file=f)
