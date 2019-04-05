@@ -1,9 +1,9 @@
 # cg-clusters
-The scripts analyse clusters from coarse grained trajectory frame:
+The scripts analyse clusters from a coarse grained trajectory frame:
 
 python main.py -c file.dat -f frame -s file.pdb -t file.dcd
 
--c file.dat contains paremeters (A,C and R) for contact criterion:
+-c file.dat contains parameters (A,C and R) for a contact criterion:
 
 dc=sqrt((A*(Ra+Rb)*0.5+D)^2)
 
