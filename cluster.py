@@ -114,6 +114,4 @@ def cluster(traj,contact):
    
 ###       print("%3i %3i %3i %s" % (p0,p1,p2,c))
 
-
-
  return(c,cxyz)
