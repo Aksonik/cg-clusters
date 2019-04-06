@@ -1,5 +1,5 @@
 # cg-clusters
-The scripts analyse clusters from a coarse grained trajectory frame:
+The scripts analyze clusters from a coarse grained trajectory frame:
 
 python main.py -c file.dat -f frame -s file.pdb -t file.dcd
 
