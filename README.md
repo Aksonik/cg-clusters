@@ -12,7 +12,10 @@ python main.py -c file.dat -f frame -s file.pdb -t file.dcd
 
 -c file.dat contains parameters (A,C and R) for a contact criterion:
 
-dc=A*(Ra+Rb)*0.5+D
+##### Contact criterion
+Two molecules are assumed to be in contact if the distance between them is less than *d*:
+
+d = A \cdot ( R_{A} + R_{B} ) + D
 
 where R is a double radius of a molecule.
 
