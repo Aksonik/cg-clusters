@@ -4,11 +4,11 @@ import mdtraj as md
 
 def cluster(traj,contact):
 
- file=open(contact,"r")		### read contact parameters from a file
+ fc=open(contact,"r")		### read contact parameters from a file
 
  radii={}
 
- for line in file:
+ for line in fc:
   w=line.split()
 
   if(w[0]=="Ac"):
@@ -18,7 +18,7 @@ def cluster(traj,contact):
   elif(w[0]=="Rc"):
    radii[w[1]]=float(w[2])
 
- file.close()
+ fc.close()
 
  c=[]		### clustered proteins
  cxyz=[]	### coordinates of clustered proteins
