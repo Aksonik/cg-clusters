@@ -1,5 +1,10 @@
-# cg-clusters
-The scripts analyze clusters from a coarse grained trajectory frame:
+# CG-clusters
+
+## What does it do?
+
+The repository is for clusters analysis from a coarse grained simulation. 
+![alt text](https://github.com/Aksonik/cg-clusters/blob/master/scheme.png)
+
 
 python main.py -c file.dat -f frame -s file.pdb -t file.dcd
 
@@ -14,3 +19,7 @@ OUTPUT:
 2. PDB with wrapped clusters.
 3. PDB with center of geometry of the clusters.
 4. Radial distribution function for each cluster and each molecule type.
+
+## What else does it need?
+
+mdtraj (link)
