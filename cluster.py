@@ -15,8 +15,8 @@ def cluster(traj,contact):
    Ac=float(w[1])
   elif(w[0]=="Dc"):
    Dc=float(w[1])
-  else:
-   radii[w[0]]=float(w[1])
+  elif(w[0]=="Rc"):
+   radii[w[1]]=float(w[2])
 
  file.close()
 
@@ -124,5 +124,14 @@ def cluster(traj,contact):
 
  cs=sorted(c,key=len,reverse=True)		### sorted: largest -> smallest
  csxyz=sorted(cxyz,key=len,reverse=True)
+
+ f=open("cluster.dat","w")
+ for c in cs:
+  print("%s:" % len(c),end=" ",file=f)
+  for i in c:
+   print("%i" % i,end=" ",file=f)
+   if(i==(c[len(c)-1])):
+    print("",file=f)		### new line
+ f.close()
 
  return(cs,csxyz)
