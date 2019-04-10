@@ -38,3 +38,4 @@ cog=cog.cog(clust,clust_xyz,trajectory)
 ### calculates radial distribution function of clusters
 rdf=rdf.rdf(clust,clust_xyz,trajectory,cog)
 
+print(clust)
