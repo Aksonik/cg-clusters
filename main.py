@@ -39,3 +39,5 @@ cog=cog.cog(clust,clust_xyz,trajectory)
 rdf=rdf.rdf(clust,clust_xyz,trajectory,cog)
 
 print(clust)
+#print(sorted(clust,key=len,reverse=True))
+#print(clust.sort(key=len))

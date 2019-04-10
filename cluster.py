@@ -1,6 +1,6 @@
 #!/bin/python
 import mdtraj as md
-import numpy as np	### needed only for sqrt to test
+#import numpy as np	### needed only for sqrt to test
 
 def cluster(traj,contact):
 
@@ -122,4 +122,7 @@ def cluster(traj,contact):
    
 ###       print("%3i %3i %3i %s" % (p0,p1,p2,c))
 
- return(c,cxyz)
+ cs=sorted(c,key=len,reverse=True)		### sorted: largest -> smallest
+ csxyz=sorted(cxyz,key=len,reverse=True)
+
+ return(cs,csxyz)
