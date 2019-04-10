@@ -15,7 +15,9 @@ python main.py -c file.dat -f frame -s file.pdb -t file.dcd
 #### Contact criterion
 Two molecules are assumed to be in contact if the distance between them is less than *d*:
 
-![\Large d = A \cdot ( R_{A} + R_{B} ) + D](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
+<img src="http://latex.codecogs.com/svg.latex?1+sin(x)" d = A \cdot ( R_{A} + R_{B} ) + D/>
+
+![](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
 
 Let $d = A \cdot ( R_{A} + R_{B} ) + D$
 
