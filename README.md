@@ -23,9 +23,7 @@ python main.py -c file -f frame -s file -t file
 
 Two molecules, *A* and *B*, are assumed to be in contact if the distance between them is less than *d*:
 
-```
 *d* = *A<sub>c</sub>* ( *R<sub>c</sub><sup>A</sup>* + *R<sub>c</sub><sup>B</sup>* ) 0.5 + *D<sub>c</sub>*
-```
 
 where *A<sub>c</sub>* and *D<sub>c</sub>* are adjustable parameters, and *R<sub>c</sub>* is a diameter of a molecule.
 
