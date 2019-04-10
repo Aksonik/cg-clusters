@@ -17,6 +17,10 @@ Two molecules are assumed to be in contact if the distance between them is less 
 
 Let $d = A \cdot ( R_{A} + R_{B} ) + D$
 
+\begin{equation}
+ d = A \cdot ( R_{A} + R_{B} ) + D
+\end{equation}
+
 where R is a double radius of a molecule.
 
 ## OUTPUT:
