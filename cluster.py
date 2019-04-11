@@ -125,13 +125,18 @@ def cluster(traj,contact):
  cs=sorted(c,key=len,reverse=True)		### sorted: largest -> smallest
  csxyz=sorted(cxyz,key=len,reverse=True)
 
- f=open("cluster.dat","w")
+ return(cs,csxyz)
+
+def cluster_write(cs,dirout):
+
+ f=open(str(dirout)+"/cluster.dat","w")
+
  for c in cs:
   print("%s:" % len(c),end=" ",file=f)
   for i in c:
    print("%i" % i,end=" ",file=f)
    if(i==(c[len(c)-1])):
     print("",file=f)		### new line
+
  f.close()
 
- return(cs,csxyz)

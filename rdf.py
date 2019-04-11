@@ -2,12 +2,7 @@
 import numpy as np
 import os
 
-def rdf(clust,clust_xyz,traj,cog):
-
- if not os.path.exists("rdf"):		### remove/create results directory
-  os.mkdir("rdf")
- for f in os.listdir("rdf"):
-  os.remove("rdf/"+f)
+def rdf(clust,clust_xyz,traj,cog,dirout):
 
  bs=0.5		### bin size [nm]
 
@@ -62,7 +57,7 @@ def rdf(clust,clust_xyz,traj,cog):
 
 ###   print(bn)
 
-   f=open("rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat","w")
+   f=open(str(dirout)+"/rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat","w")
 
    for b in range(0,len(bn)):
     vol=4.0/3.0*3.141592653589793*((b*bs+bs)**3-(b*bs)**3)	### [nm^3]

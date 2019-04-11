@@ -1,8 +1,8 @@
 #!/bin/python
 
-def genpdb(clust,cxyz,traj):
+def genpdb(clust,cxyz,traj,dirout):
 
- f=open("genpdb.pdb","w")
+ f=open(str(dirout)+"/genpdb.pdb","w")
 
  bx=traj.unitcell_lengths[0][0]*10.0	### [nm] -> [A]
  by=traj.unitcell_lengths[0][1]*10.0

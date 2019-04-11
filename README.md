@@ -11,13 +11,15 @@
 python main.py -c file -f frame -s file -t file
 ```
 
-*-c file.dat* is a parameter file for the contact criterion
+*-c file* -- a parameter file for the contact criterion
 
-*-f frame* is a frame number (TXT)
+*-f frame* -- a frame number (INT)
 
-*-s file.pdb* is a structure file (PDB)
+*-s file* -- a structure file (PDB)
 
-*-t file.dcd* is a trajectory file (DCD)
+*-t file* -- a trajectory file (DCD)
+
+*-fndx file -- a list of frame numbers (INT)
 
 #### Contact criterion
 
@@ -41,14 +43,16 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 
 #### Output
 
-1. Cluster size distribution (*csd.dat*).
-2. PDB with wrapped clusters (*genpdb.pdb*).
+<ol>
+<li>Cluster size distribution (*csd.dat*).</li>
+<li>PDB with wrapped clusters (*genpdb.pdb*).</li>
 
 Molecules belonging to different clusters have different values in the occupancy column.
 The valuse are from 0.00 to 1.00, such that they can be used to color the clusters with *VMD*.
 
-3. PDB with center of geometry of the clusters (*cog.dat*).
-4. Radial distribution function for each cluster (*rdf*).
+<li>PDB with center of geometry of the clusters (*cog.dat*).</li>
+<li>Radial distribution function for each cluster (*rdf*).</li>
+</ol>
 
 #### What else does it need?
 
