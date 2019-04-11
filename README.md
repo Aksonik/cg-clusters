@@ -19,7 +19,7 @@ python main.py -c file -f frame -s file -t file
 
 *-t file* -- a trajectory file (DCD)
 
-*-fndx file -- a list of frame numbers (INT)
+*-fndx file* -- a list of frame numbers (INT)
 
 #### Contact criterion
 
@@ -44,14 +44,15 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 #### Output
 
 <ol>
-<li>Cluster size distribution (*csd.dat*).</li>
-<li>PDB with wrapped clusters (*genpdb.pdb*).</li>
+<li>Cluster size distribution (<i>csd.dat</i>).</li>
+<li>PDB with wrapped clusters (<i>genpdb.pdb</i>).
 
 Molecules belonging to different clusters have different values in the occupancy column.
-The valuse are from 0.00 to 1.00, such that they can be used to color the clusters with *VMD*.
+The valuse are from 0.00 to 1.00, such that they can be used to color the clusters with <i>VMD</i>.
+</li>
 
-<li>PDB with center of geometry of the clusters (*cog.dat*).</li>
-<li>Radial distribution function for each cluster (*rdf*).</li>
+<li>PDB with center of geometry of the clusters (<i>cog.dat</i>).</li>
+<li>Radial distribution function for each cluster (<i>rdf</i>).</li>
 </ol>
 
 #### What else does it need?
