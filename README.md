@@ -19,7 +19,9 @@ python main.py -c file -f frame -s file -t file
 
 *-t file* -- a trajectory file (DCD)
 
-*-fndx file* -- a list of frame numbers (INT)
+*-fn file* -- a list of frame numbers (int)
+
+*-bs size* -- bin size for RDF analysis (float)
 
 #### Contact criterion
 
@@ -52,7 +54,10 @@ The valuse are from 0.00 to 1.00, such that they can be used to color the cluste
 </li>
 
 <li>PDB with center of geometry of the clusters (<i>cog.dat</i>).</li>
-<li>Radial distribution function for each cluster (<i>rdf</i>).</li>
+<li>Radial distribution function (RDF) for each cluster (<i>rdf</i>).
+
+If not specified by the *-bs* option the bin size is equal to 0.5 nm.
+</li>
 </ol>
 
 #### What else does it need?

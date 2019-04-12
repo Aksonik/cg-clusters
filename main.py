@@ -12,21 +12,28 @@ import os
 
 parser=argparse.ArgumentParser(description="Parse options.")
 
-parser.add_argument("-s",type=str,help="structure file")
-parser.add_argument("-t",type=str,help="trajecotry file")
-parser.add_argument("-f",type=int,help="frame number")
-parser.add_argument("-fndx",type=str,help="file with frame numbers")
-parser.add_argument("-c",type=str,help="contact criterion parameters")
+parser.add_argument("-s",type=str,help="structure file (PDB)")
+parser.add_argument("-t",type=str,help="trajecotry file (DCD)")
+parser.add_argument("-f",type=int,help="frame number (singe integer)")
+parser.add_argument("-fn",type=str,help="file with frame numbers (integers)")
+parser.add_argument("-c",type=str,help="file with contact criterion parameters")
+parser.add_argument("-bs",type=float,help="bin size for RDF analysis")
 
 args=parser.parse_args()
 
 ### determine frame/frames
-if(args.fndx!=None):			### file with frame numbers
- d=numpy.loadtxt(str(args.fndx))
+if(args.fn!=None):			### file with frame numbers
+ d=numpy.loadtxt(str(args.fn))
 elif(args.f!=None):			### frame number
  d=args.f
 else:					### default frame number
  d=1
+
+### bin size for RDF
+if(args.bs!=None):
+ bs=args.bs
+else:
+ bs=0.5			### [nm]
 
 for n in d:
  frame=int(n-1)
@@ -53,7 +60,7 @@ for n in d:
  cog.cog_write(center,dirout)
 
 ### calculates radial distribution function of clusters
- rdf.rdf(clust,clust_xyz,trajectory,center,dirout)
+ rdf.rdf(clust,clust_xyz,trajectory,center,dirout,bs)
 
 #print(clust)
 #print(sorted(clust,key=len,reverse=True))

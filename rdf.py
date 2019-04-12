@@ -2,9 +2,7 @@
 import numpy as np
 import os
 
-def rdf(clust,clust_xyz,traj,cog,dirout):
-
- bs=0.5		### bin size [nm]
+def rdf(clust,clust_xyz,traj,cog,dirout,bs):
 
  dd=[]
  rr=[]

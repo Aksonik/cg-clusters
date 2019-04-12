@@ -127,6 +127,8 @@ def cluster(traj,contact):
 
  return(cs,csxyz)
 
+
+
 def cluster_write(cs,dirout):
 
  f=open(str(dirout)+"/cluster.dat","w")
