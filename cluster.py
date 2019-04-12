@@ -7,6 +7,7 @@ def cluster(traj,contact):
  fc=open(contact,"r")		### read contact parameters from a file
 
  radii={}
+ rns=[]		### molecule types
 
  for line in fc:
   w=line.split()
@@ -17,8 +18,15 @@ def cluster(traj,contact):
    Dc=float(w[1])
   elif(w[0]=="Rc"):
    radii[w[1]]=float(w[2])
+   rns.append(w[1])
 
  fc.close()
+
+ rcm={}		### matrix for number of contacts
+
+ for rn1 in range(0,len(rns)):
+  for rn2 in range(rn1,len(rns)):
+   rcm[rns[rn1],rns[rn2]]=0
 
  c=[]		### clustered proteins
  cxyz=[]	### coordinates of clustered proteins
@@ -109,13 +117,18 @@ def cluster(traj,contact):
 
 ###       print("%3i %3i %3i %s" % (p0,p1,p2,c))
 
-       if(dxyz2<rc2):
+       if(dxyz2<rc2):		### are or are not in contact
         c[cn].append(p2)
         pr2rm.append(p2)
         cxyz[cn].append([x2,y2,z2])
 
         pl=pl-1
         print("proteins left:",pl)
+
+        if (rn1,rn2) in rcm:
+         rcm[rn1,rn2]=rcm[rn1,rn2]+1	### sum contacts
+        else:
+         rcm[rn2,rn1]=rcm[rn2,rn1]+1	### sum contacts
 
      for r in pr2rm:
       pr.remove(r)
@@ -125,9 +138,7 @@ def cluster(traj,contact):
  cs=sorted(c,key=len,reverse=True)		### sorted: largest -> smallest
  csxyz=sorted(cxyz,key=len,reverse=True)
 
- return(cs,csxyz)
-
-
+ return(cs,csxyz,rcm)
 
 def cluster_write(cs,dirout):
 
@@ -139,6 +150,31 @@ def cluster_write(cs,dirout):
    print("%i" % i,end=" ",file=f)
    if(i==(c[len(c)-1])):
     print("",file=f)		### new line
+
+ f.close()
+
+
+def contacts_write(contacts,dirout,contact):
+
+ fc=open(contact,"r")		### read contact parameters from a file
+
+ rns=[]		### molecule types
+
+ for line in fc:
+  w=line.split()
+
+  if(w[0]=="Rc"):
+   rns.append(w[1])
+
+ fc.close()
+
+ allcon=sum(contacts.values())
+
+ f=open(str(dirout)+"/contacts.dat","w")
+
+ for rn1 in range(0,len(rns)):
+  for rn2 in range(rn1,len(rns)):
+   print("%3s %3s %12i %6.3f" % (rns[rn1],rns[rn2],contacts[rns[rn1],rns[rn2]],contacts[rns[rn1],rns[rn2]]/allcon),file=f)
 
  f.close()
 

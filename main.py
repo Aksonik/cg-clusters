@@ -25,9 +25,9 @@ args=parser.parse_args()
 if(args.fn!=None):			### file with frame numbers
  d=numpy.loadtxt(str(args.fn))
 elif(args.f!=None):			### frame number
- d=args.f
+ d=[args.f]
 else:					### default frame number
- d=1
+ d=[1]
 
 ### bin size for RDF
 if(args.bs!=None):
@@ -45,8 +45,9 @@ for n in d:
  trajectory=traj.traj(args.s,args.t,frame)
 
 ### gives back clustered proteins numbers and their wrapped coordinates
- clust,clust_xyz=cluster.cluster(trajectory,args.c)
+ clust,clust_xyz,contacts=cluster.cluster(trajectory,args.c)
  cluster.cluster_write(clust,dirout)
+ cluster.contacts_write(contacts,dirout,args.c)
 
 ### determines cluster size distribution function
  clustdist=csd.csd(clust)

@@ -58,8 +58,10 @@ The valuse are from 0.00 to 1.00, such that they can be used to color the cluste
 
 If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </li>
+
+<li>Number and percentage of contacts betweed different types of molecules.</li>
 </ol>
 
 #### What else does it need?
 
-MDTraj [link](http://mdtraj.org)
+MDTraj ([link](http://mdtraj.org))
