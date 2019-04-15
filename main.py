@@ -6,6 +6,7 @@ import cluster
 import traj
 import genpdb
 import csd
+import csd_plt
 import cog
 import rdf
 import os
@@ -23,7 +24,7 @@ args=parser.parse_args()
 
 ### determine frame/frames
 if(args.fn!=None):			### file with frame numbers
- d=numpy.loadtxt(str(args.fn))
+ d=numpy.loadtxt(str(args.fn),dtype="int")
 elif(args.f!=None):			### frame number
  d=[args.f]
 else:					### default frame number
@@ -36,8 +37,9 @@ else:
  bs=0.5			### [nm]
 
 for n in d:
- frame=int(n-1)
- dirout="f"+str(int(n))
+ print("frame:",n)
+ frame=n-1
+ dirout="f"+str(n)
  if not os.path.exists(str(dirout)):
   os.mkdir(dirout)
 
@@ -66,3 +68,8 @@ for n in d:
 #print(clust)
 #print(sorted(clust,key=len,reverse=True))
 #print(clust.sort(key=len))
+
+### average and plot cluster size distributions
+
+csd.csd_avg(d)
+#csd_plt.csd_plt()

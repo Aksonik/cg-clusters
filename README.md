@@ -46,7 +46,10 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 #### Output
 
 <ol>
-<li>Cluster size distribution (<i>csd.dat</i>).</li>
+<li>Cluster size distribution (<i>csd.dat</i>).
+![alt text](https://github.com/Aksonik/cg-clusters/blob/master/csd.png)
+</li>
+
 <li>PDB with wrapped clusters (<i>genpdb.pdb</i>).
 
 Molecules belonging to different clusters have different values in the occupancy column.
@@ -59,7 +62,7 @@ The valuse are from 0.00 to 1.00, such that they can be used to color the cluste
 If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </li>
 
-<li>Number and percentage of contacts betweed different types of molecules.</li>
+<li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat</i>).</li>
 </ol>
 
 #### What else does it need?
