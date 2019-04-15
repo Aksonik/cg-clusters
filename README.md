@@ -47,8 +47,9 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 
 <ol>
 <li>Cluster size distribution (<i>csd.dat</i>).
-![alt text](https://github.com/Aksonik/cg-clusters/blob/master/csd.png)
 </li>
+
+![alt text](https://github.com/Aksonik/cg-clusters/blob/master/csd.png)
 
 <li>PDB with wrapped clusters (<i>genpdb.pdb</i>).
 
