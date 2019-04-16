@@ -51,7 +51,6 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 </li>
 
 ![alt text](https://github.com/Aksonik/cg-clusters/blob/master/csd.png)
-<font color="gray"> Fig.: Cluster size distribution.</font>
 
 <li>PDB with wrapped clusters (<i>genpdb.pdb</i>).
 
@@ -69,8 +68,6 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </ol>
 
 ![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png)
-
-<font color="gray"> Fig.: Number of contacts.</font>
 
 #### What else does it need?
 

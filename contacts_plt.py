@@ -13,7 +13,7 @@ lw=1		### line weight (when neighboring labels is bolt)
 
 fi=open("contacts/contacts.dat","r")	### data file (label x, label y, value)
 
-fig=figure(figsize=(10,5))
+fig=figure(figsize=(12,3))
 fig.subplots_adjust(left=0.05,bottom=0.05,right=0.95,top=0.95,hspace=0.05,wspace=0.05)
 
 ax=plt.subplot(1,1,1)
