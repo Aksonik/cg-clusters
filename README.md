@@ -71,7 +71,8 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 ![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png)
 
 
-[![Watch the video](https://github.com/Aksonik/cg-clusters/blob/master/movie.png)](https://www.youtube.com/watch?v=ek1j272iAmc)
+
+[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
 
 #### What else does it need?
 
