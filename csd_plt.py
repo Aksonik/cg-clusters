@@ -1,15 +1,10 @@
 #!/bin/python
 
-import numpy as np
-import scipy as sci
-from scipy.optimize import curve_fit
-import sys
-from pylab import *
-import matplotlib.pyplot as plt
-import os.path
-
 import matplotlib as mpl
 mpl.use('Agg')
+
+import numpy as np
+from pylab import *
 
 colors=["blue"]
 
@@ -39,6 +34,5 @@ plt.yticks(np.arange(0,20,2),fontsize=20)
 
 #plt.xticks(fontsize=20)
 #plt.yticks(fontsize=20)
-
 
 plt.savefig("csd/csd.png")

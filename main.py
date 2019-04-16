@@ -10,7 +10,8 @@ import csd_plt
 import cog
 import rdf
 import os
-
+import contacts_plt
+"""
 parser=argparse.ArgumentParser(description="Parse options.")
 
 parser.add_argument("-s",type=str,help="structure file (PDB)")
@@ -72,4 +73,8 @@ for n in d:
 ### average and plot cluster size distributions
 
 csd.csd_avg(d)
-#csd_plt.csd_plt()
+csd_plt
+
+cluster.contacts_avg(d)
+"""
+contacts_plt

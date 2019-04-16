@@ -38,6 +38,7 @@ Ac 1.0
 Dc 0.7
 Rc CGA 1.5
 Rc CGB 2.0
+Rc CGC 2.5
 ```
 
 where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers, 
@@ -46,10 +47,11 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 #### Output
 
 <ol>
-<li>Cluster size distribution (<i>csd.dat</i>).
+<li>Cluster size distribution (<i>csd.dat, csd.png</i>).
 </li>
 
 ![alt text](https://github.com/Aksonik/cg-clusters/blob/master/csd.png)
+<font color="gray"> Fig.: Cluster size distribution.</font>
 
 <li>PDB with wrapped clusters (<i>genpdb.pdb</i>).
 
@@ -65,6 +67,10 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
 <li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat</i>).</li>
 </ol>
+
+![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png)
+
+<font color="gray"> Fig.: Number of contacts.</font>
 
 #### What else does it need?
 

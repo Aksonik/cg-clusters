@@ -1,6 +1,7 @@
 #!/bin/python
 import mdtraj as md
-#import numpy as np	### needed only for sqrt to test
+import numpy
+import os
 
 def cluster(traj,contact):
 
@@ -107,10 +108,10 @@ def cluster(traj,contact):
        elif((z2-z1)<(-0.5*bz)):
         z2=z2+bz
 
-#       dxyz=np.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)	### closest distance
+#       dxyz=numpy.sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)	### closest distance
        dxyz2=(x1-x2)**2+(y1-y2)**2+(z1-z2)**2
 
-#       rc=np.sqrt((Ac*(radii[rn1]+radii[rn2])*0.5+Dc)**2)	### contact distance criterion
+#       rc=numpy.sqrt((Ac*(radii[rn1]+radii[rn2])*0.5+Dc)**2)	### contact distance criterion
        rc2=(Ac*(radii[rn1]+radii[rn2])*0.5+Dc)**2
 
 #       print("%2i-%2i (%3s-%3s) %12.6f %12.6f" % (p1,p2,rn1,rn2,rc,dxyz))
@@ -178,3 +179,47 @@ def contacts_write(contacts,dirout,contact):
 
  f.close()
 
+
+
+def contacts_avg(d):
+
+ r1=[]		### type of molecule A
+ r2=[]		### type of molecule B
+
+ c=[]		### number of contacts
+ p=[]		### percentage of number of contacts
+
+ for f in d:
+
+  fi=open("f"+str(f)+"/contacts.dat","r")
+
+  cn=-1
+  for line in fi:
+   cn=cn+1
+
+   w=line.split()
+
+   if(f==1):
+    r1.append(w[0])
+    r2.append(w[1])
+
+    c.append([float(w[2])])
+    p.append([float(w[3])])
+   else:
+    c[cn].append(float(w[2]))
+    p[cn].append(float(w[3]))
+
+ d="contacts"
+ if not os.path.exists(d):
+  os.mkdir(d)
+
+ fo=open(d+"/contacts.dat","w")
+
+ for i in range(0,len(c)):
+  print("%5s %5s %12.3f %12.3f %12.3f %12.3f %12.3f %12.3f"
+% (r1[i],r2[i],
+   numpy.mean(c[i]),numpy.std(c[i]),numpy.std(c[i])/numpy.sqrt(len(c[i])),
+   numpy.mean(p[i]),numpy.std(p[i]),numpy.std(p[i])/numpy.sqrt(len(p[i]))),
+   file=fo)
+
+ fo.close()
