@@ -68,12 +68,10 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </ol>
 
 
-![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png)
+#![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png)
 
 
-[![Watch the video](https://github.com/Aksonik/cg-clusters/blob/master/movie.png)](https://github.com/Aksonik/cg-clusters/blob/master/movie.gif)
-
-[![Watch the video](https://github.com/Aksonik/cg-clusters/blob/master/movie.png)](https://github.com/Aksonik/cg-clusters/blob/master/movie.mp4)
+<!-- [![Watch the video](https://github.com/Aksonik/cg-clusters/blob/master/movie.png)](https://github.com/Aksonik/cg-clusters/blob/master/movie.gif) -->
 
 #### What else does it need?
 
