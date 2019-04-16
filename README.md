@@ -67,7 +67,7 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 <li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat</i>).</li>
 </ol>
 
-![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png)
+
 
 #### What else does it need?
 
