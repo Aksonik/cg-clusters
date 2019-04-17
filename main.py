@@ -11,7 +11,7 @@ import cog
 import rdf
 import os
 import contacts_plt
-"""
+
 parser=argparse.ArgumentParser(description="Parse options.")
 
 parser.add_argument("-s",type=str,help="structure file (PDB)")
@@ -76,5 +76,5 @@ csd.csd_avg(d)
 csd_plt
 
 cluster.contacts_avg(d)
-"""
+
 contacts_plt

@@ -2,8 +2,15 @@
 
 ### The repository is to determine and analyze clusters in coarse grained simulations.
 
-![alt text](https://github.com/Aksonik/cg-clusters/blob/master/scheme.png)
+<figure>
+<img src="https://github.com/Aksonik/cg-clusters/blob/master/scheme.png" width="75%" alt="" >
+</figure>
 
+### How does it work?
+
+<figure>
+<img src="https://github.com/Aksonik/cg-clusters/blob/master/anima.gif" width="75%" alt="" >
+</figure>
 
 #### Command
 
