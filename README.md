@@ -1,20 +1,20 @@
 # CG-clusters
 
-### The repository is to determine and analyze clusters of molecules in a coarse grained simulation.
+#### The repository is to determine and analyze clusters of molecules in a coarse grained simulation.
 
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/scheme.png" width="75%" alt="" >
 </figure>
 
-<font color="Gray"> 
 <b>Figure:</b> A system of 3,000 molecules. Left: the molecules are colored by the size (green > red > blue). Right: the molecules are colored by clusters they belong to. 
-</font>
 
-### How does it work?
+#### How does it work?
 
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/anima.gif" width="50%" alt="" >
 </figure>
+
+<b>Figure:</b> The clusters are determined based on a contact criterion.
 
 #### Command
 
@@ -24,13 +24,13 @@ python main.py -c file -f frame -s file -t file
 
 *-c file* -- a parameter file for the contact criterion
 
-*-f frame* -- a frame number (INT)
+*-f frame* -- a frame number (int)
+
+*-fn file* -- a list of frame numbers (int)
 
 *-s file* -- a structure file (PDB)
 
 *-t file* -- a trajectory file (DCD)
-
-*-fn file* -- a list of frame numbers (int)
 
 *-bs size* -- bin size for RDF analysis (float)
 
@@ -53,13 +53,13 @@ Rc CGC 2.5
 ```
 
 where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers, 
-*CGA* and *CGB* are atom names in the structure file.
+*CGA*, *CGB*, and *CGC* are atom names in the structure file.
 
 #### Output
 
 <ol>
-<li>Cluster size distribution (<i>csd.dat, csd.png</i>).
-</li>
+
+<li>Cluster size distribution (<i>csd.dat, csd.png</i>).</li>
 
 ![alt text](https://github.com/Aksonik/cg-clusters/blob/master/csd.png)
 
@@ -70,21 +70,28 @@ The valuse are from 0.00 to 1.00, such that they can be used to color the cluste
 </li>
 
 <li>PDB with center of geometry of the clusters (<i>cog.dat</i>).</li>
-<li>Radial distribution function (RDF) for each cluster (<i>rdf</i>).
+<li>Radial distribution function for each cluster (<i>rdf</i>).
 
-If not specified by the *-bs* option the bin size is equal to 0.5 nm.
-</li>
+If not specified by the *-bs* option the bin size is equal to 0.5 nm.</li>
 
-<li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat</i>).</li>
-</ol>
-
+<li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat, contacts.png</i>).</li>
 
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/contacts.png" width="75%" alt="" >
 </figure>
 
-<!-- {:height="700px" width="400px"} -->
+</ol>
+
+#### Remarks
+
+<ol>
+
+<li> Multiple trajectory frames are analyzed separately. Then, average, standard deviation and uncertainty is calculated.</li>
+
+<li> If a cluster is infinite, *i.e.* interacts with its own images through periodic boundary conditions, its shape is arbitrary.</li>
+
+</ol>
 
 #### What else does it need?
 
-MDTraj ([link](http://mdtraj.org))
+[MDTraj](http://mdtraj.org)
