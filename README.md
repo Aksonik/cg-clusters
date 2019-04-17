@@ -9,7 +9,7 @@
 ### How does it work?
 
 <figure>
-<img src="https://github.com/Aksonik/cg-clusters/blob/master/anima.gif" width="75%" alt="" >
+<img src="https://github.com/Aksonik/cg-clusters/blob/master/anima.gif" width="50%" alt="" >
 </figure>
 
 #### Command
