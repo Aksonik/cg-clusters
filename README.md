@@ -6,8 +6,8 @@
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/scheme.png" width="75%" alt="" >
 </figure>
 
-<font color="gray"> 
-Figure: A system of 3,000 molecules. Left: the molecules are colored by the size (green > red > blue). Right: the molecules are colored by clusters they belong to. 
+<font color="Gray"> 
+<b>Figure:</b> A system of 3,000 molecules. Left: the molecules are colored by the size (green > red > blue). Right: the molecules are colored by clusters they belong to. 
 </font>
 
 ### How does it work?
