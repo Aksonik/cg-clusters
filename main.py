@@ -76,5 +76,4 @@ csd.csd_avg(d)
 csd_plt
 
 cluster.contacts_avg(d)
-
 contacts_plt
