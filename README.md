@@ -68,10 +68,8 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </ol>
 
 
-![alt text](https://github.com/Aksonik/cg-clusters/blob/master/contacts.png){width="50%"}
-
 <figure>
-<img src="https://github.com/Aksonik/cg-clusters/blob/master/contacts.png" width="50%" alt="" >
+<img src="https://github.com/Aksonik/cg-clusters/blob/master/contacts.png" width="75%" alt="" >
 </figure>
 
 <!-- {:height="700px" width="400px"} -->
