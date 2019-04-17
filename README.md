@@ -68,7 +68,6 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </ol>
 
 
-
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/contacts.png" width="75%" alt="" >
 </figure>
