@@ -9,6 +9,7 @@ import csd
 import csd_plt
 import cog
 import rdf
+import rdf_plt
 import os
 import contacts_plt
 
@@ -30,6 +31,8 @@ elif(args.f!=None):			### frame number
  d=[args.f]
 else:					### default frame number
  d=[1]
+
+"""
 
 ### bin size for RDF
 if(args.bs!=None):
@@ -77,3 +80,8 @@ csd_plt
 
 cluster.contacts_avg(d)
 contacts_plt
+"""
+mt=cluster.molecules_types(args.c)
+#rdf.rdf_avg(d,mt)
+
+rdf_plt.rdf_plot(mt)

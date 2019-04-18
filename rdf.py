@@ -1,6 +1,7 @@
 #!/bin/python
-import numpy as np
+import numpy
 import os
+import glob
 
 def rdf(clust,clust_xyz,traj,cog,dirout,bs):
 
@@ -20,7 +21,7 @@ def rdf(clust,clust_xyz,traj,cog,dirout,bs):
    pz=clust_xyz[c][p][2]
 
    r=traj.topology.atom(clust[c][p]).name		### residue
-   d=np.sqrt((cx-px)**2+(cy-py)**2+(cz-pz)**2)		### distance from the center
+   d=numpy.sqrt((cx-px)**2+(cy-py)**2+(cz-pz)**2)		### distance from the center
 
    if(p==0):
     dd.append([d])
@@ -62,3 +63,44 @@ def rdf(clust,clust_xyz,traj,cog,dirout,bs):
     print(b*bs+0.5*bs,bn[b]/vol,file=f)				### [1/nm^3]
 
    f.close()
+
+
+
+def rdf_avg(d,molecules_types):
+
+ for mt in molecules_types:
+
+  ax=[]
+  ay=[]
+
+  for i in range(0,1000):
+   ax.append([])
+   ay.append([])
+
+  for f in d:
+   finame=glob.glob("f"+str(f)+"/rdf/rdf_0_5??_*_"+mt+".dat")
+
+   fi=open(finame[0],"r")
+
+   data=numpy.loadtxt(fi)
+   x=data[:,0]
+   y=data[:,1]
+
+   for i in range(0,len(x)):
+    ax[i].append(x[i])
+    ay[i].append(y[i])
+
+   fi.close()
+
+  dd="rdf"
+  if not os.path.exists(dd):
+   os.mkdir(dd)
+
+  fi=open(dd+"/rdf_"+mt+".dat","w")
+
+  for i in range(0,len(ax)):
+   if(ax[i]!=[]):
+    print("%9.3f %9.3f %9.3f %9.3f" % (numpy.mean(ax[i]),numpy.mean(ay[i]),
+numpy.std(ay[i]),numpy.std(ay[i])/numpy.sqrt(len(ax[i]))),file=fi)
+
+  fi.close()

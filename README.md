@@ -72,7 +72,13 @@ The valuse are from 0.00 to 1.00, such that they can be used to color the cluste
 <li>PDB with center of geometry of the clusters (<i>cog.dat</i>).</li>
 <li>Radial distribution function for each cluster (<i>rdf</i>).
 
+<figure>
+<img src="https://github.com/Aksonik/cg-clusters/blob/master/rdf.png" width="75%" alt="" >
+</figure>
+
+
 If not specified by the *-bs* option the bin size is equal to 0.5 nm.
+
 An example of a file name: rdf_6_182_58_CGB.dat - a radial distribution function of 58 CGB molecules in a cluster of total 182 molecules and ID 6.
 </li>
 

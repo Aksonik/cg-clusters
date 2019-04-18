@@ -6,33 +6,46 @@ mpl.use('Agg')
 import numpy as np
 from pylab import *
 
-colors=["blue"]
+def rdf_plot(molecules_types):
 
-fig=figure(figsize=(16,4))
-fig.subplots_adjust(left=0.06,bottom=0.18,right=0.97,top=0.95,hspace=0.05,wspace=0.05)
+ colors=["blue","red","green"]
 
-f="csd/csd.dat"
-d=np.loadtxt(f)
-x=d[:,0]
-y=d[:,1]
-yerr=d[:,3]
+ fig=figure(figsize=(10,5))
+ fig.subplots_adjust(left=0.13,bottom=0.16,right=0.97,top=0.95,hspace=0.05,wspace=0.05)
 
-xx=np.insert(x,0,x[0]-1)		### to have first step full
-yy=np.insert(y,0,y[0])
+ c=-1
 
-plt.step(xx+0.5,yy,color=colors[0],linewidth=2.0)
-plt.errorbar(x,y,yerr=yerr,ecolor=colors[0],ls="none",elinewidth=1.0)
-plt.plot(x,y,marker="s",color=colors[0],ls="None")
+ for mt in molecules_types:
 
-plt.xlabel(r'cluster size',fontsize=24)
-plt.ylabel(r'proteins [%]', fontsize=24)
+  c=c+1
 
-plt.xlim(-10,550)
-plt.ylim(0,20)
-plt.xticks(np.arange(0,550,100),fontsize=20)
-plt.yticks(np.arange(0,20,2),fontsize=20)
+  f="rdf/rdf_"+str(mt)+".dat"
 
-#plt.xticks(fontsize=20)
-#plt.yticks(fontsize=20)
+  d=np.loadtxt(f)
+  x=d[:,0]
+  y=d[:,1]
+  yerr=d[:,3]
 
-plt.savefig("csd/csd.png")
+  xx=np.insert(x,0,x[0]-1)		### to have first step full
+  yy=np.insert(y,0,y[0])
+
+  b=x[1]-x[0]
+
+  plt.step(xx+b*0.5,yy,color=colors[c],linewidth=2.0,label=str(mt))
+  plt.errorbar(x,y,yerr=yerr,ecolor=colors[c],ls="none",elinewidth=1.0,capsize=4)
+  plt.plot(x,y,marker="s",color=colors[c],ls="None")
+
+ plt.xlabel(r'radius [nm]',fontsize=24)
+ plt.ylabel(r'density [1/nm$^3$]', fontsize=24)
+
+# plt.xlim(-1,25)
+# plt.ylim(0,20)
+# plt.xticks(np.arange(0,550,100),fontsize=20)
+# plt.yticks(np.arange(0,20,2),fontsize=20)
+
+ legend(loc=1,fontsize=20,fancybox=True).get_frame().set_alpha(0.5)
+
+ plt.xticks(fontsize=20)
+ plt.yticks(fontsize=20)
+
+ plt.savefig("rdf/rdf.png")

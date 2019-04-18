@@ -3,6 +3,24 @@ import mdtraj as md
 import numpy
 import os
 
+def molecules_types(contact):
+
+ fc=open(contact,"r")		### read contact parameters from a file
+
+ rns=[]		### molecule types
+
+ for line in fc:
+  w=line.split()
+
+  if(w[0]=="Rc"):
+   rns.append(w[1])
+
+ fc.close()
+
+ return rns
+
+
+
 def cluster(traj,contact):
 
  fc=open(contact,"r")		### read contact parameters from a file

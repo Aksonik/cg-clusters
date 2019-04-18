@@ -47,9 +47,9 @@ def csd_avg(d):
   ay.append([])
 
  for f in d:
-  f=open("f"+str(f)+"/csd.dat","r")
+  fi=open("f"+str(f)+"/csd.dat","r")
 
-  data=numpy.loadtxt(f)
+  data=numpy.loadtxt(fi)
   x=data[:,0]
   y=data[:,1]
 
@@ -57,17 +57,17 @@ def csd_avg(d):
    ax[i].append(x[i])
    ay[i].append(y[i])
 
-  f.close()
+  fi.close()
 
  d="csd"
  if not os.path.exists(d):
   os.mkdir(d)
 
- f=open(d+"/csd.dat","w")
+ fi=open(d+"/csd.dat","w")
 
  for i in range(0,len(ax)):
   if(ax[i]!=[]):
    print("%6i %9.3f %9.3f %9.3f" % (numpy.mean(ax[i]),numpy.mean(ay[i]),
-numpy.std(ay[i]),numpy.std(ay[i])/numpy.sqrt(len(ax[i]))),file=f)
+numpy.std(ay[i]),numpy.std(ay[i])/numpy.sqrt(len(ax[i]))),file=fi)
 
- f.close()
+ fi.close()
