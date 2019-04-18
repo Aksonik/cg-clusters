@@ -78,7 +78,7 @@ An example of a file name: *rdf_6_182_58_CGB.dat* - a radial distribution functi
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/rdf.png" width="75%" alt="" >
 </figure>
 
-<b>Figure:</b> Average radial distribution functions of the largest cluster.
+<b>Figure:</b> Average radial distribution functions of different molecule types in the largest cluster.
 
 If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
