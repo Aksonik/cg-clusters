@@ -6,7 +6,7 @@
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/scheme.png" width="75%" alt="" >
 </figure>
 
-<b>Figure:</b> A system of 3,000 molecules. *Left:* the molecules are colored by the size (green > red > blue). *Right:* the molecules are colored by the clusters they belong to. 
+<b>Figure:</b> A system of 3,000 molecules. The molecules are colored by their types (*left*) and the clusters they belong to (*right*). 
 
 #### How does it work?
 
@@ -14,7 +14,7 @@
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/anima.gif" width="50%" alt="" >
 </figure>
 
-<b>Figure:</b> The clusters are determined based on a contact criterion.
+<b>Figure:</b> The clusters are determined based on a contact criterion. The periodic boundary conditions are taken into account. 
 
 #### Command
 
@@ -32,7 +32,7 @@ python main.py -c file -f frame -s file -t file
 
 *-t file* -- a trajectory file (DCD)
 
-*-bs size* -- bin size for RDF analysis (float)
+*-bs size* -- bin size for the radial distribution analysis (float)
 
 #### Contact criterion
 
@@ -69,17 +69,19 @@ Molecules belonging to different clusters have different values in the occupancy
 The valuse are from 0.00 to 1.00, such that they can be used to color the clusters with <i>VMD</i>.
 </li>
 
-<li>PDB with center of geometry of the clusters (<i>cog.dat</i>).</li>
-<li>Radial distribution function for each cluster (<i>rdf</i>).
+<li>PDB with center of geometry of the clusters (<i>cog.pdb</i>).</li>
+<li>Radial distribution function for each cluster and each molecule type (<i>rdf</i>).
+
+An example of a file name: *rdf_6_182_58_CGB.dat* - a radial distribution function of 58 CGB molecules in a cluster of total 182 molecules and ID 6.
 
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/rdf.png" width="75%" alt="" >
 </figure>
 
+<b>Figure:</b> Average radial distribution functions of the largest cluster.
 
 If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
-An example of a file name: rdf_6_182_58_CGB.dat - a radial distribution function of 58 CGB molecules in a cluster of total 182 molecules and ID 6.
 </li>
 
 <li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat, contacts.png</i>).</li>
@@ -87,6 +89,8 @@ An example of a file name: rdf_6_182_58_CGB.dat - a radial distribution function
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/contacts.png" width="75%" alt="" >
 </figure>
+
+<b>Table:</b> Average number of contacts.
 
 </ol>
 
