@@ -86,13 +86,13 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
 </li>
 
-<li>Number and percentage of contacts betweed different types of molecules (<i>contacts.dat, contacts.png</i>).</li>
+<li>Number and percentage of contacts betweed molecules (<i>contacts.dat, contacts.png</i>).</li>
 
 <figure>
 <img src="https://github.com/Aksonik/cg-clusters/blob/master/contacts.png" width="75%" alt="" >
 </figure>
 
-<b>Table:</b> Average number of contacts.
+<b>Table:</b> Average number of contacts between different types of molecules.
 
 <li>Solubility limit [mM], i.e. concentration of molecules in the saturated volume.</li>
 
