@@ -94,7 +94,7 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
 <b>Table:</b> Average number of contacts.
 
-<li>Solubility limit \[mM\], i.e. concentration of molecules in the saturated volume.</li>
+<li>Solubility limit [mM], i.e. concentration of molecules in the saturated volume.</li>
 
 </ol>
 
