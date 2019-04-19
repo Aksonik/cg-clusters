@@ -12,6 +12,9 @@ import rdf
 import rdf_plt
 import os
 import contacts_plt
+import solublim
+
+### parameters
 
 parser=argparse.ArgumentParser(description="Parse options.")
 
@@ -21,24 +24,27 @@ parser.add_argument("-f",type=int,help="frame number (singe integer)")
 parser.add_argument("-fn",type=str,help="file with frame numbers (integers)")
 parser.add_argument("-c",type=str,help="file with contact criterion parameters")
 parser.add_argument("-bs",type=float,help="bin size for RDF analysis")
+parser.add_argument("-sl",type=int,help="cluster size threshold for the solubility limit")
 
 args=parser.parse_args()
 
-### determine frame/frames
+### read frame/frames for the analysis
+
 if(args.fn!=None):			### file with frame numbers
  d=numpy.loadtxt(str(args.fn),dtype="int")
 elif(args.f!=None):			### frame number
  d=[args.f]
-else:					### default frame number
- d=[1]
+else:
+ d=[1]					### default frame number
 
-"""
+### bin size for radial distribution function
 
-### bin size for RDF
 if(args.bs!=None):
  bs=args.bs
 else:
- bs=0.5			### [nm]
+ bs=0.5					### default size [nm]
+
+### loop over the frames
 
 for n in d:
  print("frame:",n)
@@ -47,27 +53,45 @@ for n in d:
  if not os.path.exists(str(dirout)):
   os.mkdir(dirout)
 
-### reads the structure and a frame from the trajectory
+### read a structure (PDB) and a frame (coordinates) from the trajectory (DCD)
+
  trajectory=traj.traj(args.s,args.t,frame)
 
+### read the box size [nm]
+
+ bx,by,bz=cluster.box(trajectory,dirout)
+
+
 ### gives back clustered proteins numbers and their wrapped coordinates
+
  clust,clust_xyz,contacts=cluster.cluster(trajectory,args.c)
  cluster.cluster_write(clust,dirout)
  cluster.contacts_write(contacts,dirout,args.c)
 
 ### determines cluster size distribution function
+
  clustdist=csd.csd(clust)
  csd.csd_write(clustdist,dirout)
 
 ### generates a pdb of proteins with wrapped coordinates
+
  genpdb.genpdb(clust,clust_xyz,trajectory,dirout)
 
 ### calculates centers of geometry of clusters
+
  center=cog.cog(clust,clust_xyz,trajectory)
  cog.cog_write(center,dirout)
 
 ### calculates radial distribution function of clusters
+
  rdf.rdf(clust,clust_xyz,trajectory,center,dirout,bs)
+
+### calculates the solubility limit
+
+ if(args.sl!=None):
+  solublim.solublim(dirout,args.c,args.t,args.s,args.sl)
+
+
 
 #print(clust)
 #print(sorted(clust,key=len,reverse=True))
@@ -78,10 +102,14 @@ for n in d:
 csd.csd_avg(d)
 csd_plt
 
+### average and plot number of contacts
+
 cluster.contacts_avg(d)
 contacts_plt
-"""
+
+### average and plot radial distrinution function
+
 mt=cluster.molecules_types(args.c)
-#rdf.rdf_avg(d,mt)
+rdf.rdf_avg(d,mt)
 
 rdf_plt.rdf_plot(mt)

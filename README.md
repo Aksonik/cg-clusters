@@ -34,6 +34,8 @@ python main.py -c file -f frame -s file -t file
 
 *-bs size* -- bin size for the radial distribution analysis (float)
 
+*-sl size* -- cluster size threshold for the solubility limit calculation (int)
+
 #### Contact criterion
 
 Two molecules, *A* and *B*, are assumed to be in contact if the distance between them is less than *d*:
@@ -91,6 +93,8 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 </figure>
 
 <b>Table:</b> Average number of contacts.
+
+<li>Solubility limit \[mM\], i.e. concentration of molecules in the saturated volume.</li>
 
 </ol>
 

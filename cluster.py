@@ -19,6 +19,33 @@ def molecules_types(contact):
 
  return rns
 
+def molecules_radii(contact):
+
+ fc=open(contact,"r")		### read contact parameters from a file
+
+ radii={}	### molecule radii
+
+ for line in fc:
+  w=line.split()
+
+  if(w[0]=="Rc"):
+   radii[w[1]]=float(w[2])
+
+ fc.close()
+
+ return radii
+
+def box(traj,dirout):
+ bx=traj.unitcell_lengths[0][0]		### box
+ by=traj.unitcell_lengths[0][1]
+ bz=traj.unitcell_lengths[0][2]
+
+ fi=open(str(dirout)+"/box.dat","w")
+ print(bx,by,bz,file=fi)
+ fi.close()
+
+ return bx,by,bz
+
 
 
 def cluster(traj,contact):
