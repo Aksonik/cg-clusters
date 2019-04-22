@@ -6,12 +6,10 @@ import cluster
 import traj
 import genpdb
 import csd
-import csd_plt
 import cog
 import rdf
 import rdf_plt
 import os
-import contacts_plt
 import solublim
 
 ### parameters
@@ -55,7 +53,7 @@ for n in d:
 
 ### read a structure (PDB) and a frame (coordinates) from the trajectory (DCD)
 
- trajectory=traj.traj(args.s,args.t,frame)
+ trajectory=traj.traj(args.s,args.t,frame,args.c)
 
 ### read the box size [nm]
 
@@ -92,6 +90,10 @@ for n in d:
   solublim.solublim(dirout,args.c,args.t,args.s,args.sl)
 
 
+
+
+import csd_plt
+import contacts_plt
 
 #print(clust)
 #print(sorted(clust,key=len,reverse=True))

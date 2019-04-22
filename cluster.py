@@ -216,13 +216,14 @@ def contacts_write(contacts,dirout,contact):
 
  allcon=sum(contacts.values())
 
- f=open(str(dirout)+"/contacts.dat","w")
+ if(allcon>0):
+  f=open(str(dirout)+"/contacts.dat","w")
+ 
+  for rn1 in range(0,len(rns)):
+   for rn2 in range(rn1,len(rns)):
+    print("%3s %3s %12i %6.3f" % (rns[rn1],rns[rn2],contacts[rns[rn1],rns[rn2]],contacts[rns[rn1],rns[rn2]]/allcon),file=f)
 
- for rn1 in range(0,len(rns)):
-  for rn2 in range(rn1,len(rns)):
-   print("%3s %3s %12i %6.3f" % (rns[rn1],rns[rn2],contacts[rns[rn1],rns[rn2]],contacts[rns[rn1],rns[rn2]]/allcon),file=f)
-
- f.close()
+  f.close()
 
 
 

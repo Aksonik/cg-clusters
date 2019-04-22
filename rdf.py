@@ -56,13 +56,16 @@ def rdf(clust,clust_xyz,traj,cog,dirout,bs):
 
 ###   print(bn)
 
-   f=open(str(dirout)+"/rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat","w")
+   fname=str(dirout)+"/rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat"
+   if(os.path.isfile(fname)):
 
-   for b in range(0,len(bn)):
-    vol=4.0/3.0*3.141592653589793*((b*bs+bs)**3-(b*bs)**3)	### [nm^3]
-    print(b*bs+0.5*bs,bn[b]/vol,file=f)				### [1/nm^3]
+    f=open(fname,"w")
 
-   f.close()
+    for b in range(0,len(bn)):
+     vol=4.0/3.0*3.141592653589793*((b*bs+bs)**3-(b*bs)**3)	### [nm^3]
+     print(b*bs+0.5*bs,bn[b]/vol,file=f)				### [1/nm^3]
+
+    f.close()
 
 
 
