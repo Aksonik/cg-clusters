@@ -11,6 +11,7 @@ import rdf
 import rdf_plt
 import os
 import solublim
+import cluster_traceback
 
 ### parameters
 
@@ -92,8 +93,6 @@ for n in d:
 
 
 
-import csd_plt
-import contacts_plt
 
 #print(clust)
 #print(sorted(clust,key=len,reverse=True))
@@ -102,16 +101,34 @@ import contacts_plt
 ### average and plot cluster size distributions
 
 csd.csd_avg(d)
+
+import csd_plt
 csd_plt
 
 ### average and plot number of contacts
 
 cluster.contacts_avg(d)
+import contacts_plt
 contacts_plt
 
 ### average and plot radial distrinution function
+### of which cluster? - needs to be done
 
-mt=cluster.molecules_types(args.c)
-rdf.rdf_avg(d,mt)
+#mt=cluster.molecules_types(args.c)
+#rdf.rdf_avg(d,mt)
+#rdf_plt.rdf_plot(mt)
 
-rdf_plt.rdf_plot(mt)
+
+
+### loop over the frames
+
+for n in d:
+ print("frame:",n)
+ frame=n-1
+ dirout="f"+str(n)
+ if not os.path.exists(str(dirout)):
+  os.mkdir(dirout)
+
+### trace back a cluster
+
+cluster_traceback

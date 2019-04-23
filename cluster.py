@@ -245,7 +245,7 @@ def contacts_avg(d):
 
    w=line.split()
 
-   if(f==1):
+   if(f==min(d)):
     r1.append(w[0])
     r2.append(w[1])
 

@@ -96,6 +96,9 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
 <li>Solubility limit [mM], i.e. concentration of molecules in the saturated volume.</li>
 
+<li>A cluster of the highest similarity in the composition to a given cluster. In this way,
+one can trace back how a cluster is growing.</li> 
+
 </ol>
 
 #### Remarks

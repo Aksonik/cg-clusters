@@ -56,16 +56,13 @@ def rdf(clust,clust_xyz,traj,cog,dirout,bs):
 
 ###   print(bn)
 
-   fname=str(dirout)+"/rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat"
-   if(os.path.isfile(fname)):
+   f=open(str(dirout)+"/rdf/rdf_"+str(c)+"_"+str(len(clust[c]))+"_"+str(len(drr))+"_"+str(r)+".dat","w")
 
-    f=open(fname,"w")
+   for b in range(0,len(bn)):
+    vol=4.0/3.0*3.141592653589793*((b*bs+bs)**3-(b*bs)**3)	### [nm^3]
+    print(b*bs+0.5*bs,bn[b]/vol,file=f)				### [1/nm^3]
 
-    for b in range(0,len(bn)):
-     vol=4.0/3.0*3.141592653589793*((b*bs+bs)**3-(b*bs)**3)	### [nm^3]
-     print(b*bs+0.5*bs,bn[b]/vol,file=f)				### [1/nm^3]
-
-    f.close()
+   f.close()
 
 
 
@@ -82,18 +79,19 @@ def rdf_avg(d,molecules_types):
 
   for f in d:
    finame=glob.glob("f"+str(f)+"/rdf/rdf_0_5??_*_"+mt+".dat")
+   if(os.path.isfile(finame)):
 
-   fi=open(finame[0],"r")
+    fi=open(finame[0],"r")
 
-   data=numpy.loadtxt(fi)
-   x=data[:,0]
-   y=data[:,1]
+    data=numpy.loadtxt(fi)
+    x=data[:,0]
+    y=data[:,1]
 
-   for i in range(0,len(x)):
-    ax[i].append(x[i])
-    ay[i].append(y[i])
+    for i in range(0,len(x)):
+     ax[i].append(x[i])
+     ay[i].append(y[i])
 
-   fi.close()
+    fi.close()
 
   dd="rdf"
   if not os.path.exists(dd):
