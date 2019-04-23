@@ -111,7 +111,7 @@ In this way, one can trace back how a cluster is growing.
 
 <li> If a cluster is infinite, i.e. interacts with its own images through the periodic boundary conditions, its shape is arbitrary.</li>
 
-<li> Somethimes we would like to analyze a particular cluster, e.g. determine its radial distribution function. Since a cluster might be highly dynamic, i.e. its size and molecular composition change over time, it is not obvious how to track it. Here the idea is to pick up a desired cluster from one of the frames, then, in each other frame find a cluster of the most similar composition.</li>
+<li> Somethimes we would like to analyze a particular cluster over time, <i>e.g.</i> determine its radial distribution function. Since a cluster might be highly dynamic, i.e. its size and molecular composition change over time, it is not obvious how to track it. Here the idea is to pick up a desired cluster from one of the frames, then, in each other frame find a cluster of the most similar composition.</li>
 
 </ol>
 
