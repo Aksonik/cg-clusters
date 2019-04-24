@@ -60,7 +60,6 @@ for n in d:
 
  bx,by,bz=cluster.box(trajectory,dirout)
 
-
 ### gives back clustered proteins numbers and their wrapped coordinates
 
  clust,clust_xyz,contacts=cluster.cluster(trajectory,args.c)
@@ -119,7 +118,6 @@ contacts_plt
 #rdf_plt.rdf_plot(mt)
 
 
-
 ### loop over the frames
 
 for n in d:
@@ -131,4 +129,7 @@ for n in d:
 
 ### trace back a cluster
 
-cluster_traceback
+ cluster_traceback.cluster_traceback()
+ cluster_traceback.cluster_traceback_write(n)
+
+
