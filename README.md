@@ -96,7 +96,7 @@ If not specified by the *-bs* option the bin size is equal to 0.5 nm.
 
 <li>Solubility limit [mM], i.e. concentration of molecules in the saturated volume.</li>
 
-<li>A cluster of the highest similarity in the composition to a given (<i>cluster_traceback.dat</i>). 
+<li>A cluster of the highest similarity in the composition to a given (<i>cluster_traceback.dat</i>,<i>cluster_traceback.pdb</i>,<i>cluster_traceback_vmd.pdb</i>). 
 
 In this way, one can trace back how a cluster is growing.
 </li> 
@@ -112,6 +112,8 @@ In this way, one can trace back how a cluster is growing.
 <li> If a cluster is infinite, i.e. interacts with its own images through the periodic boundary conditions, its shape is arbitrary.</li>
 
 <li> Somethimes we would like to analyze a particular cluster over time, <i>e.g.</i> determine its radial distribution function. Since a cluster might be highly dynamic, <i>i.e.</i> its size and molecular composition change, it is not obvious how to track it. Here the idea is to pick up a desired cluster from one of the frames, then, in each other frame find a cluster of the most similar composition.</li>
+
+<li> VMD does not allow for visualisation of a trajectory with varying number of atoms or occupancy. To see cluster dynamics, <i>e.g</i> cluster growth, all the other atoms are simply placed in (0,0,0) postion.</li>
 
 </ol>
 
