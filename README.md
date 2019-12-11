@@ -22,19 +22,24 @@
 python main.py -c file -f frame -s file -t file
 ```
 
-*-c file* -- a parameter file for the contact criterion
+*-s file* -- a structure file (PDB)
+
+*-t file* -- a trajectory file (DCD)
+
 
 *-f frame* -- a frame number (int)
 
 *-fn file* -- a list of frame numbers (int)
 
-*-s file* -- a structure file (PDB)
+*-fr first interval last* -- a range of frame numbers (int int int)
 
-*-t file* -- a trajectory file (DCD)
+*-c file* -- a parameter file for the contact criterion
 
 *-bs size* -- bin size for the radial distribution analysis (float)
 
 *-sl size* -- cluster size threshold for the solubility limit calculation (int)
+
+*-i frame ID* -- frame and ID of a cluster to be traced (int int)
 
 #### Contact criterion
 
@@ -60,6 +65,8 @@ where *D<sub>c</sub>* and *R<sub>c</sub>* values are in nanometers,
 #### Output
 
 <ol>
+
+<li>Clusters: cluster ID, cluster size, molecules numbers (<i>cluster.dat</i>).</li>
 
 <li>Cluster size distribution (<i>csd.dat, csd.png</i>).</li>
 
@@ -111,6 +118,8 @@ In this way, one can trace back how a cluster is growing.
 
 <li> If a cluster is infinite, i.e. interacts with its own images through the periodic boundary conditions, its shape is arbitrary.</li>
 
+<li> Molecules not defined in the contact criterion parameters file (<i>-c</i>) are omitted when reading the trajectory.
+
 <li> Somethimes we would like to analyze a particular cluster over time, <i>e.g.</i> determine its radial distribution function. Since a cluster might be highly dynamic, <i>i.e.</i> its size and molecular composition change, it is not obvious how to track it. Here the idea is to pick up a desired cluster from one of the frames, then, in each other frame find a cluster of the most similar composition.</li>
 
 <li> VMD does not allow for visualisation of a trajectory with varying number of atoms or occupancy. To see cluster dynamics, <i>e.g</i> growth, all the other atoms are simply placed in <i>(0,0,0)</i> postion.</li>
@@ -120,3 +129,5 @@ In this way, one can trace back how a cluster is growing.
 #### What else does it need?
 
 [MDTraj](http://mdtraj.org)
+
+The work was done at the Michigan State University.
